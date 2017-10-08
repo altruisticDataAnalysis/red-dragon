@@ -1,19 +1,14 @@
 # red-dragon
 
-San Francisco Weather Data
+## San Francisco Yearly Max Temp 
 
-Jeffrey Long
+For Daily Weather Data at Station USW00023272
 
-https://jeffreycarllong.com
+From 1921 to 2017 
 
-10/7/2017
+![San Francisco Yearly Max Temp From 1921 to 2017 From Daily Weather Data at Station USW00023272](https://github.com/altruisticDataAnalysis/red-dragon/blob/master/San%20Francisco%20Yearly%20Max%20Temp.png)
 
-This program wrangles data using R code. The data is from the weather station nearest to my home in Duboce Triangle, SF, CA. The National Oceanic and Atmospheric Administration (NOAA) National Centers For Environmental Information, is the source of the local station data.
-
-The first dataset obtained for station USW00023272 were daily summaries for all time, relative to this SF weather station.
-
-San Francisco Yearly Average Max Temp
-Calculating and plotting the mean max temp per year for all data collected at San Francisco weather station.
+The program below wrangles data using R code. The data is from the weather station nearest my home in Duboce Triangle, SF, CA. [The National Oceanic and Atmospheric Administration (NOAA) National Centers For Environmental Information](https://www.ncdc.noaa.gov/) is the data source. The daily weather data summaries are for all time, relative to this SF weather station existence.
 
 ```{r}
     library(tidyverse)
@@ -55,3 +50,25 @@ Calculating and plotting the mean max temp per year for all data collected at Sa
         summarise((sfDaily = mean(TMAX)))
     plot(sfYearMax)
 ```
+
+MIT License
+
+Copyright (c) 2017 Jeffrey Long
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

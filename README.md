@@ -1,6 +1,6 @@
 # red-dragon
 
-## San Francisco Yearly Max Temp 
+## San Francisco Yearly Average of Daily Max Temp 
 
 For Daily Weather Data at Station USW00023272
 

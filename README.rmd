@@ -90,14 +90,22 @@ daylightYear <- rbind(daylightYear, daylightOct)
 daylightYear <- rbind(daylightYear, daylightNov)
 daylightYear <- rbind(daylightYear, daylightDec)
 
-daylightYear <- select(daylightYear,3,1,2)
 daylightYear <- na.omit(daylightYear)
+
+daylightYear$dayOfYear <- daylightYear %>%
+  mutate(1:365)
+# colnames(df)[names(df)=="varName"] <- "newVarName"
+colnames(daylightYear)[names(daylightYear)=="dayOfYear.1:365"] <- "dayOfYear"
+
+#daylightYear <- select(daylightYear,3,1,2)
+
 as.character(daylightYear$Day)
 daylightYear$`Day of Year` <- paste(daylightYear$Month, daylightYear$Day)
-daylightYear <- select(daylightYear, 4,3)
-require(ggplot2)
-theme_set(theme_bw()) # Change the theme to my preference
-ggplot(aes(x = daylightYear$`Day of Year`, y = daylightYear$Daylight), data = daylightYear) + geom_point()
+#daylightYear <- select(daylightYear, 4,3)
+plot(daylightYear$Daylight)
+#require(ggplot2)
+#theme_set(theme_bw()) # Change the theme to my preference
+#ggplot(aes(x = daylightYear$dayOfYear, y = daylightYear$Daylight), data = daylightYear) + geom_point()
 ```
 
 

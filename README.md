@@ -22,7 +22,7 @@ The program below wrangles data using R code. The data is from the weather stati
 ## Conflicts with tidy packages ----------------------------------------------
 ## filter(): dplyr, stats
 ## lag():    dplyr, stats
-    sfDaily <- read_csv("weatherData/sf1921to2017GhcnDaily.csv")
+    sfDaily <- read_csv("data/sf1921to2017GhcnDaily.csv")
 ## Parsed with column specification:
 ## cols(
 ##   .default = col_character(),

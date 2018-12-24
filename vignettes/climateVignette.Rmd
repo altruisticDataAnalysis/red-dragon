@@ -1,0 +1,61 @@
+---
+title: "Weather Data Wrangling"
+author: "Jeffrey Long"
+date: "`r Sys.Date()`"
+output:
+      rmarkdown::html_vignette:
+        fig_caption: yes
+vignette: >
+  %\VignetteIndexEntry{Climate Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+This program is a demo of data wrangling possibilities in R using
+data from the nearest weather station to my home in Duboce Triangle, SF, CA.
+The National Oceanic and Atmospheric Administration (NOAA)
+National Centers For Environmental Information,
+https://www.ncdc.noaa.gov/cdo-web/datatools allowed local station data
+to be ordered and downloaded.
+
+The first datasets obtained for station USW00023272 were daily summaries and hourly precipitation for all time.
+
+```{r}
+library(tidyverse)
+```
+
+## Data
+
+Loading SF Weather data from September 2017 to earliest record.
+
+```{r}
+library(readr)
+sfDaily <- read_csv("../data/sf1921to2017GhcnDaily.csv")
+# Checking if any columns have just NAs. None do. So none are removed.
+sfDaily <- sfDaily[,colSums(is.na(sfDaily))<nrow(sfDaily)]
+```
+
+## San Francisco Yearly Average Max Temp
+
+```{r, fig.cap = "Duboce Triangle, SF, CA"}
+# fig.show='hold' ## for side by side plots
+sfDaily$YEAR <- substring(sfDaily$DATE,1,4)
+#newDf <- df %>%
+#  group_by(groupVar) %>%
+#  summarize(df = mean(result))
+sfYearMax <- sfDaily %>%
+  group_by(sfDaily$YEAR) %>%
+  summarise((sfDaily = mean(TMAX)))
+plot(sfYearMax)
+```
+
+
+## Recent Data
+
+ The average $Max = \sum DailyTemp_{Max} / N days$, footnote^[some reference to see].
+
+```{r, echo=FALSE, results='asis'}
+knitr::kable(tail(sfYearMax, 17))
+```
+
+> [Me](http://jeffreycarllong.com/)

@@ -28,7 +28,7 @@ library(tidyverse)
 
 Loading SF Weather data from September 2017 to earliest record.
 
-```{r}
+```{r message=FALSE}
 library(readr)
 sfDaily <- read_csv("../data/sf1921to2017GhcnDaily.csv")
 # Checking if any columns have just NAs. None do. So none are removed.
@@ -46,7 +46,7 @@ sfDaily$YEAR <- substring(sfDaily$DATE,1,4)
 sfYearMax <- sfDaily %>%
   group_by(sfDaily$YEAR) %>%
   summarise((sfDaily = mean(TMAX)))
-plot(sfYearMax)
+plot(sfYearMax, pin = 6,6)
 ```
 
 
